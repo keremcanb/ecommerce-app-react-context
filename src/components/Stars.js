@@ -20,4 +20,5 @@ const Wrapper = styled.div`
   }
   margin-bottom: 0.5rem;
 `;
+
 export default Stars;

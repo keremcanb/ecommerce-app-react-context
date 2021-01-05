@@ -64,4 +64,5 @@ const Wrapper = styled.article`
     letter-spacing: var(--spacing);
   }
 `;
+
 export default Product;

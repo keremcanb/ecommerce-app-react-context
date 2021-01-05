@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Contact = () => {
   return <h4>contact section</h4>;
 };
+
 const Wrapper = styled.section`
   padding: 5rem 0;
   h3 {
