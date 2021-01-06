@@ -1,4 +1,4 @@
-import FeaturedProducts from './FeaturedProducts';
+import FeaturedProducts from './products/FeaturedProducts';
 import Navbar from './layout/Navbar';
 import CartButtons from './buttons/CartButtons';
 import Footer from './layout/Footer';
@@ -8,14 +8,14 @@ import Services from './sections/Services';
 import Contact from './sections/Contact';
 import Loading from './utils/Loading';
 import Error from './Error';
-import ProductImages from './ProductImages';
+import ProductImages from './products/ProductImages';
 import AddToCart from './cart/AddToCart';
 import Filters from './utils/Filters';
-import ProductList from './ProductList';
+import ProductList from './products/ProductList';
 import Sort from './utils/Sort';
 import Stars from './utils/Stars';
 import CartContent from './cart/CarContent';
-import PageHero from './PageHero';
+import PageHero from './products/PageHero';
 
 export {
   FeaturedProducts,
