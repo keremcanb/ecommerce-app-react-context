@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.svg';
 import { useProductsContext } from '../../context/actions/products_context';
 import { links } from '../../utils/constants';
-import CartButtons from '../buttons/CartButtons';
+import CartButtons from '../cart/CartButtons';
 import { useUserContext } from '../../context/actions/user_context';
 
 const Sidebar = () => {

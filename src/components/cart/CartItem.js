@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaTrash } from 'react-icons/fa';
 import { formatPrice } from '../../utils/helpers';
-import AmountButtons from '../buttons/AmountButtons';
+import AmountButtons from './AmountButtons';
 import { useCartContext } from '../../context/actions/cart_context';
 
 const CartItem = () => {
