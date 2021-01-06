@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaTrash } from 'react-icons/fa';
 import { formatPrice } from '../../utils/helpers';
 import AmountButtons from '../buttons/AmountButtons';
-import { useCartContext } from '../../context/cart_context';
+import { useCartContext } from '../../context/actions/cart_context';
 
 const CartItem = () => {
   return <h4>cart item</h4>;
