@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import styled from 'styled-components';
-import logo from '../assets/logo.svg';
-import { useProductsContext } from '../context/products_context';
-import { links } from '../utils/constants';
-import CartButtons from './CartButtons';
-import { useUserContext } from '../context/user_context';
+import logo from '../../assets/logo.svg';
+import { useProductsContext } from '../../context/products_context';
+import { links } from '../../utils/constants';
+import CartButtons from '../buttons/CartButtons';
+import { useUserContext } from '../../context/user_context';
 
 const Sidebar = () => {
   return <h4>sidebar</h4>;
