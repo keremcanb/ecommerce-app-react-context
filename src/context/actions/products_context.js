@@ -13,14 +13,28 @@ import {
   GET_SINGLE_PRODUCT_ERROR,
 } from '../types';
 
-const initialState = {};
+const initialState = {
+  isSidebarOpen: false,
+};
 
 const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({ children }) => {
-  return <ProductsContext.Provider value="products context">{children}</ProductsContext.Provider>;
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const openSidebar = () => {
+    dispatch({ type: SIDEBAR_OPEN });
+  };
+
+  const closeSidebar = () => {
+    dispatch({ type: SIDEBAR_CLOSE });
+  };
+
+  return (
+    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>{children}</ProductsContext.Provider>
+  );
 };
-// make sure use
+
 export const useProductsContext = () => {
   return useContext(ProductsContext);
 };

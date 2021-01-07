@@ -8,4 +8,9 @@ import { FilterProvider } from './context/actions/filter_context';
 import { CartProvider } from './context/actions/cart_context';
 import { UserProvider } from './context/actions/user_context';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <ProductsProvider>
+    <App />
+  </ProductsProvider>,
+  document.getElementById('root')
+);
