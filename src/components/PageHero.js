@@ -2,9 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const PageHero = () => {
-  return <h4>page hero</h4>;
-};
+const PageHero = ({ title }) => (
+  <Wrapper>
+    <div className="section-center">
+      <h3>
+        <Link to="/">Home</Link>
+        <Link to="/products">/ Products</Link>/ {title}
+      </h3>
+    </div>
+  </Wrapper>
+);
 
 const Wrapper = styled.section`
   background: var(--clr-primary-10);
@@ -12,7 +19,6 @@ const Wrapper = styled.section`
   min-height: 20vh;
   display: flex;
   align-items: center;
-
   color: var(--clr-primary-1);
   a {
     color: var(--clr-primary-3);

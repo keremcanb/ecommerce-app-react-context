@@ -15,7 +15,7 @@ import ProductList from './products/ProductList';
 import Sort from './utils/Sort';
 import Stars from './utils/Stars';
 import CartContent from './cart/CarContent';
-import PageHero from './products/PageHero';
+import PageHero from './PageHero';
 
 export {
   FeaturedProducts,
