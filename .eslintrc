@@ -1,6 +1,8 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "no-nested-ternary": 0,
+    "react/jsx-props-no-spreading": 0,
     "no-unused-vars": 0,
     "camelcase": 0,
     "no-unreachable": 0,

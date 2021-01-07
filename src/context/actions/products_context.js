@@ -42,8 +42,7 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
       const { data } = await get(url);
-      const products = data;
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
     } catch (err) {
       dispatch({ type: GET_PRODUCTS_ERROR });
     }
