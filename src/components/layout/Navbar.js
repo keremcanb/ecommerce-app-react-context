@@ -9,17 +9,21 @@ import { useProductsContext } from '../../context/actions/products_context';
 import { useUserContext } from '../../context/actions/user_context';
 
 const Nav = () => {
+  const { openSidebar } = useProductsContext();
+
   return (
     <NavContainer>
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="comfy sloth" />
+            <img src={logo} alt="logo" />
           </Link>
-          <button type="button" className="nav-toggle">
+
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
+
         <ul className="nav-links">
           {links.map((link) => {
             const { id, text, url } = link;
@@ -30,6 +34,7 @@ const Nav = () => {
             );
           })}
         </ul>
+
         <CartButtons />
       </div>
     </NavContainer>
@@ -71,6 +76,7 @@ const NavContainer = styled.nav`
   .cart-btn-wrapper {
     display: none;
   }
+
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;
