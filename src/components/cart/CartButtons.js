@@ -17,9 +17,9 @@ const CartButtons = () => {
           <span className="cart-value">12</span>
         </span>
       </Link>
-      <button type="button" className="auth-btn">
+      {/* <button type="button" className="auth-btn">
         Logout <FaUserMinus />
-      </button>
+      </button> */}
       <button type="button" className="auth-btn">
         Login <FaUserPlus />
       </button>
