@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -7,7 +9,72 @@ import { formatPrice } from '../utils/helpers';
 import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../components';
 
 const SingleProductPage = () => {
-  return <h4>single product page</h4>;
+  const {
+    single_product_loading: loading,
+    single_product_error: error,
+    single_product: product,
+    fetchSingleProduct,
+  } = useProductsContext();
+  const { name, price, description, stock, stars, reviews, id: sku, company, images } = product;
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`);
+  }, [id]);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (error) {
+      setTimeOut(() => {
+        history.push('/');
+      }, 3000);
+    }
+  }, [error]);
+
+  return !loading ? (
+    !error ? (
+      <Wrapper>
+        <PageHero title={name} product />
+
+        <div className="section section-center page">
+          <Link to="/products" className="btn">
+            back to products
+          </Link>
+
+          <div className=" product-center">
+            <ProductImages images={images} />
+
+            <section className="content">
+              <h2>{name}</h2>
+              <Stars stars={stars} reviews={reviews} />
+              <h5 className="price"> {formatPrice(price)}</h5>
+              <p className="desc"> {description}</p>
+              <p className="info">
+                <span>Available: </span>
+                {stock > 0 ? 'In stock' : 'out of stock'}
+              </p>
+              <p className="info">
+                <span>SKU: </span>
+                {sku}
+              </p>
+              <p className="info">
+                <span>Brand: </span>
+                {company}
+              </p>
+              <hr />
+              {stock > 0 && <AddToCart product={product} />}
+            </section>
+          </div>
+        </div>
+      </Wrapper>
+    ) : (
+      <Error />
+    )
+  ) : (
+    <Loading />
+  );
 };
 
 const Wrapper = styled.main`

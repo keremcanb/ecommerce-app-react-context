@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { get } from 'axios';
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, createContext } from 'react';
 import reducer from '../reducers/products_reducer';
 import { products_url as url } from '../../utils/constants';
 import {
@@ -25,7 +25,7 @@ const initialState = {
   single_product: {},
 };
 
-const ProductsContext = React.createContext();
+const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -48,12 +48,24 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const fetchSingleProduct = async (url) => {
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+    try {
+      const { data } = await get(url);
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
+    } catch (err) {
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
+    }
+  };
+
   useEffect(() => {
     fetchProducts(url);
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>{children}</ProductsContext.Provider>
+    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}>
+      {children}
+    </ProductsContext.Provider>
   );
 };
 
