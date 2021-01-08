@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useProductsContext } from '../context/actions/products_context';

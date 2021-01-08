@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { FaTrash } from 'react-icons/fa';
 import { formatPrice } from '../../utils/helpers';

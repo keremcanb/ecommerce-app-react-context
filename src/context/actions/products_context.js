@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { get } from 'axios';
-import React, { useContext, useEffect, useReducer, createContext } from 'react';
+import { useContext, useEffect, useReducer, createContext } from 'react';
 import reducer from '../reducers/products_reducer';
 import { products_url as url } from '../../utils/constants';
 import {

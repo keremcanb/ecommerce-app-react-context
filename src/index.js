@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { debugContextDevtool } from 'react-context-devtool';
 import { Auth0Provider } from '@auth0/auth0-react';

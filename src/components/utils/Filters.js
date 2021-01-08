@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { FaCheck } from 'react-icons/fa';
 import { useFilterContext } from '../../context/actions/filter_context';

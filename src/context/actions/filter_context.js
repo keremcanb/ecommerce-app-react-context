@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useReducer } from 'react';
+import { useEffect, useContext, useReducer, createContext } from 'react';
 import reducer from '../reducers/filter_reducer';
 import {
   LOAD_PRODUCTS,
@@ -14,7 +14,7 @@ import { useProductsContext } from './products_context';
 
 const initialState = {};
 
-const FilterContext = React.createContext();
+const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
   return <FilterContext.Provider value="filter context">{children}</FilterContext.Provider>;
