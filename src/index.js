@@ -18,11 +18,4 @@ ReactDOM.render(
   container
 );
 
-// ReactDOM.render(
-//   <ProductsProvider>
-//     <App />
-//   </ProductsProvider>,
-//   document.getElementById('root')
-// );
-
 debugContextDevtool(container);

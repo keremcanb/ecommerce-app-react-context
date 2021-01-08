@@ -10,8 +10,14 @@ import {
 } from '../types';
 
 const filter_reducer = (state, action) => {
-  return state;
-  throw new Error(`No Matching "${action.type}" - action type`);
+  const { type, payload } = action;
+
+  switch (type) {
+    default:
+      return state;
+
+      throw new Error(`No Matching "${action.type}" - action type`);
+  }
 };
 
 export default filter_reducer;

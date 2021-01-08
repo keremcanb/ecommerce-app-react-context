@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { get } from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react';
 import reducer from '../reducers/products_reducer';
@@ -37,7 +38,6 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  // eslint-disable-next-line no-shadow
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
