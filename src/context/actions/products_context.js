@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import { get } from 'axios';
 import { useContext, useEffect, useReducer, createContext } from 'react';
 import reducer from '../reducers/products_reducer';
@@ -30,14 +29,15 @@ const ProductsContext = createContext();
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Sidebar
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
   };
-
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
+  // Fetch all products
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
@@ -48,6 +48,7 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  // Fetch single product
   const fetchSingleProduct = async (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {

@@ -1,9 +1,8 @@
-/* eslint-disable react/no-children-prop */
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Navbar, Sidebar, Footer } from './components';
 import { Home, SingleProduct, Cart, Checkout, Error, About, Products, PrivateRoute } from './pages';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Navbar />
@@ -32,6 +31,6 @@ function App() {
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;
