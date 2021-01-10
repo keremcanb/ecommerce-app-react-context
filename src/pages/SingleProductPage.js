@@ -9,7 +9,7 @@ import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../co
 const SingleProductPage = () => {
   const {
     product: { name, price, description, stock, stars, reviews, id: sku, company, images },
-    fetchSingleProduct,
+    fetchProduct,
     loading,
     error,
   } = useProductsContext();
@@ -17,7 +17,7 @@ const SingleProductPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchSingleProduct(`${url}${id}`);
+    fetchProduct(`${url}${id}`);
   }, [id]);
 
   const history = useHistory();

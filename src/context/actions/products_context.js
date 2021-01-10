@@ -5,12 +5,12 @@ import { products_url as url } from '../../utils/constants';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
-  GET_PRODUCTS_BEGIN,
+  GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
-  GET_SINGLE_PRODUCT_BEGIN,
-  GET_SINGLE_PRODUCT_SUCCESS,
-  GET_SINGLE_PRODUCT_ERROR,
+  GET_PRODUCT_REQUEST,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_ERROR,
 } from '../types';
 
 const initialState = {
@@ -37,7 +37,7 @@ export const ProductsProvider = ({ children }) => {
 
   // Fetch all products
   const fetchProducts = async (url) => {
-    dispatch({ type: GET_PRODUCTS_BEGIN });
+    dispatch({ type: GET_PRODUCTS_REQUEST });
     try {
       const { data } = await get(url);
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
@@ -47,14 +47,14 @@ export const ProductsProvider = ({ children }) => {
   };
 
   // Fetch single product
-  const fetchSingleProduct = async (url) => {
-    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
+  const fetchProduct = async (url) => {
+    dispatch({ type: GET_PRODUCT_REQUEST });
     try {
       const { data } = await get(url);
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
+      dispatch({ type: GET_PRODUCT_SUCCESS, payload: data });
     } catch (err) {
       console.log(err);
-      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
+      dispatch({ type: GET_PRODUCT_ERROR });
     }
   };
 
@@ -63,7 +63,7 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}>
+    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchProduct }}>
       {children}
     </ProductsContext.Provider>
   );

@@ -1,12 +1,12 @@
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
-  GET_PRODUCTS_BEGIN,
+  GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
-  GET_SINGLE_PRODUCT_BEGIN,
-  GET_SINGLE_PRODUCT_SUCCESS,
-  GET_SINGLE_PRODUCT_ERROR,
+  GET_PRODUCT_REQUEST,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_ERROR,
 } from '../types';
 
 const products_reducer = (state, action) => {
@@ -19,7 +19,7 @@ const products_reducer = (state, action) => {
     case SIDEBAR_CLOSE:
       return { ...state, sidebar: false };
     // Fetch all products
-    case GET_PRODUCTS_BEGIN:
+    case GET_PRODUCTS_REQUEST:
       return { ...state, loading: true };
     case GET_PRODUCTS_SUCCESS: {
       const featured = payload.filter(({ featured }) => featured === true);
@@ -28,12 +28,12 @@ const products_reducer = (state, action) => {
     case GET_PRODUCTS_ERROR:
       return { ...state, loading: false, error: true };
     // Fetch single product
-    case GET_SINGLE_PRODUCT_BEGIN:
+    case GET_PRODUCT_REQUEST:
       return { ...state, loading: true, error: false };
-    case GET_SINGLE_PRODUCT_SUCCESS: {
+    case GET_PRODUCT_SUCCESS: {
       return { ...state, loading: false, product: payload };
     }
-    case GET_SINGLE_PRODUCT_ERROR:
+    case GET_PRODUCT_ERROR:
       return { ...state, loading: false, error: true };
 
     default:
