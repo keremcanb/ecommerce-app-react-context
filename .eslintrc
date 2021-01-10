@@ -1,6 +1,7 @@
 {
   "extends": ["wesbos"],
   "rules": {
+    "react/button-has-type": 0,
     "no-undef": 0,
     "react-hooks/exhaustive-deps": 0,
     "no-shadow": 0,
