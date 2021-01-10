@@ -55,6 +55,7 @@ export const ProductsProvider = ({ children }) => {
       const { data } = await get(url);
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
     } catch (err) {
+      console.log(err);
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
   };

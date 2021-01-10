@@ -69,7 +69,6 @@ const Wrapper = styled.article`
     margin-bottom: 0;
     font-weight: 400;
   }
-
   footer p {
     color: var(--clr-primary-5);
     letter-spacing: var(--spacing);
