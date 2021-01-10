@@ -8,12 +8,11 @@ import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../co
 
 const SingleProductPage = () => {
   const {
-    single_product_loading: loading,
-    single_product_error: error,
-    single_product: product,
+    product: { name, price, description, stock, stars, reviews, id: sku, company, images },
     fetchSingleProduct,
+    loading,
+    error,
   } = useProductsContext();
-  const { name, price, description, stock, stars, reviews, id: sku, company, images } = product;
 
   const { id } = useParams();
 
@@ -62,7 +61,7 @@ const SingleProductPage = () => {
                 {company}
               </p>
               <hr />
-              {stock > 0 && <AddToCart product={product} />}
+              {/* {stock > 0 && <AddToCart product={product} />} */}
             </section>
           </div>
         </div>

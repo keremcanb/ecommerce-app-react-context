@@ -6,7 +6,7 @@ import Loading from '../utils/Loading';
 import Product from './Product';
 
 const FeaturedProducts = () => {
-  const { products_loading: loading, products_error: error, featured_products: featured } = useProductsContext();
+  const { loading, error, featured } = useProductsContext();
 
   return !loading ? (
     !error ? (

@@ -14,14 +14,12 @@ import {
 } from '../types';
 
 const initialState = {
-  isSidebarOpen: false,
-  products_loading: false,
-  products_error: false,
+  sidebar: false,
+  loading: false,
+  error: false,
   products: [],
-  featured_products: [],
-  single_product_loading: false,
-  single_product_error: false,
-  single_product: {},
+  product: {},
+  featured: [],
 };
 
 const ProductsContext = createContext();
