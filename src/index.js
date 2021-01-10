@@ -11,9 +11,15 @@ import './index.css';
 const container = document.getElementById('root');
 
 ReactDOM.render(
-  <ProductsProvider>
-    <App />
-  </ProductsProvider>,
+  <UserProvider>
+    <ProductsProvider>
+      <FilterProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </FilterProvider>
+    </ProductsProvider>
+  </UserProvider>,
   container
 );
 

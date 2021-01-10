@@ -12,11 +12,21 @@ import {
 } from '../types';
 import { useProductsContext } from './products_context';
 
-const initialState = {};
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+};
 
 const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
+  const { products } = useProductsContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
   return <FilterContext.Provider value="filter context">{children}</FilterContext.Provider>;
 };
 
