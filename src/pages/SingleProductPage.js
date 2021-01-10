@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useProductsContext } from '../context/actions/products_context';
-import { single_product_url as url } from '../utils/constants';
+import { single_product_url } from '../utils/constants';
 import { formatPrice } from '../utils/helpers';
 import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../components';
 
 const SingleProductPage = () => {
   const {
     product: { name, price, description, stock, stars, reviews, id: sku, company, images },
+    product,
     fetchProduct,
     loading,
     error,
@@ -17,7 +18,7 @@ const SingleProductPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetchProduct(`${url}${id}`);
+    fetchProduct(`${single_product_url}${id}`);
   }, [id]);
 
   const history = useHistory();
@@ -61,7 +62,7 @@ const SingleProductPage = () => {
                 {company}
               </p>
               <hr />
-              {/* {stock > 0 && <AddToCart product={product} />} */}
+              {stock > 0 && <AddToCart selectedProduct={product} />}
             </section>
           </div>
         </div>

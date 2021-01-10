@@ -14,7 +14,7 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">12</span>
+          <span className="cart-value">2</span>
         </span>
       </Link>
       {/* <button type="button" className="auth-btn">

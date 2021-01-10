@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -5,8 +6,31 @@ import { FaCheck } from 'react-icons/fa';
 import { useCartContext } from '../../context/actions/cart_context';
 import AmountButtons from './AmountButtons';
 
-const AddToCart = ({ product: { id, stock, colors } }) => {
-  return <h4>addToCart </h4>;
+const AddToCart = ({ selectedProduct: { id, stock, colors } }) => {
+  const [mainColor, setMainColor] = useState(colors[0]);
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span> colors : </span>
+        <div>
+          {colors.map((color, index) => {
+            return (
+              <button
+                key={index}
+                style={{ background: color }}
+                className={`${mainColor === color ? 'color-btn active' : 'color-btn'}`}
+                onClick={() => setMainColor(color)}
+              >
+                {mainColor === color && <FaCheck />}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="btn-container" />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`

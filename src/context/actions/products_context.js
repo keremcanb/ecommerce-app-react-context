@@ -1,7 +1,7 @@
 import { get } from 'axios';
 import { useContext, useEffect, useReducer, createContext } from 'react';
 import reducer from '../reducers/products_reducer';
-import { products_url as url } from '../../utils/constants';
+import { products_url } from '../../utils/constants';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -18,8 +18,8 @@ const initialState = {
   loading: false,
   error: false,
   products: [],
-  product: {},
   featured: [],
+  product: {},
 };
 
 const ProductsContext = createContext();
@@ -59,7 +59,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchProducts(url);
+    fetchProducts(products_url);
   }, []);
 
   return (
