@@ -8,7 +8,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
-  CLEAR_FILTERS,
+  CLEAR_FILTERS
 } from '../types';
 import { useProductsContext } from './products_context';
 
@@ -16,7 +16,7 @@ const initialState = {
   filtered_products: [],
   all_products: [],
   grid_view: false,
-  sort: 'name-a',
+  sort: 'name-a'
 };
 
 const FilterContext = createContext();

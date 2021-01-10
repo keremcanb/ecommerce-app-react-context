@@ -6,7 +6,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
-  CLEAR_FILTERS,
+  CLEAR_FILTERS
 } from '../types';
 
 const filter_reducer = (state, action) => {

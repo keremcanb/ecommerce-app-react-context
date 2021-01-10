@@ -12,7 +12,7 @@ const SingleProductPage = () => {
     product,
     fetchProduct,
     loading,
-    error,
+    error
   } = useProductsContext();
 
   const { id } = useParams();

@@ -6,7 +6,7 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
-  GET_PRODUCT_ERROR,
+  GET_PRODUCT_ERROR
 } from '../types';
 
 const products_reducer = (state, action) => {

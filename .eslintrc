@@ -1,25 +1,28 @@
 {
-  "extends": ["wesbos"],
+  "extends": [
+    "wesbos"
+  ],
   "rules": {
-    "react/button-has-type": 0,
     "no-undef": 0,
-    "react-hooks/exhaustive-deps": 0,
     "no-shadow": 0,
-    "react/no-children-prop": 0,
     "no-nested-ternary": 0,
-    "react/jsx-props-no-spreading": 0,
     "no-unused-vars": 0,
     "camelcase": 0,
     "no-unreachable": 0,
-    "react/prop-types": 0,
     "arrow-body-style": 0,
     "no-console": 0,
+    "react/no-children-prop": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0,
+    "react/button-has-type": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "es5",
+        "trailingComma": "none",
         "singleQuote": true,
         "printWidth": 120,
         "tabWidth": 2

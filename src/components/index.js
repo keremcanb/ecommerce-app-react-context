@@ -7,7 +7,7 @@ import Hero from './sections/Hero';
 import Services from './sections/Services';
 import Contact from './sections/Contact';
 import Loading from './utils/Loading';
-import Error from './Error';
+import Error from './sections/Error';
 import ProductImages from './products/ProductImages';
 import AddToCart from './cart/AddToCart';
 import Filters from './utils/Filters';
@@ -35,5 +35,5 @@ export {
   Sort,
   Stars,
   CartContent,
-  PageHero,
+  PageHero
 };

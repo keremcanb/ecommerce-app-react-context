@@ -10,7 +10,7 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
-  GET_PRODUCT_ERROR,
+  GET_PRODUCT_ERROR
 } from '../types';
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
   error: false,
   products: [],
   featured: [],
-  product: {},
+  product: {}
 };
 
 const ProductsContext = createContext();

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { BsFillGridFill, BsList } from 'react-icons/bs';
 import styled from 'styled-components';
 import { useFilterContext } from '../../context/actions/filter_context';
