@@ -32,14 +32,10 @@ const filter_reducer = (state, action) => {
           filtered.sort((a, b) => b.price - a.price);
           break;
         case 'asc':
-          filtered.sort((a, b) => {
-            return a.name.localeCompare(b.name);
-          });
+          filtered.sort((a, b) => a.name.localeCompare(b.name));
           break;
         case 'desc':
-          filtered.sort((a, b) => {
-            return b.name.localeCompare(a.name);
-          });
+          filtered.sort((a, b) => b.name.localeCompare(a.name));
           break;
         default:
           return state;

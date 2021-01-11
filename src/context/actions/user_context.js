@@ -7,6 +7,4 @@ export const UserProvider = ({ children }) => {
   return <UserContext.Provider value="user context">{children}</UserContext.Provider>;
 };
 
-export const useUserContext = () => {
-  return useContext(UserContext);
-};
+export const useUserContext = () => useContext(UserContext);
