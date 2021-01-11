@@ -18,7 +18,6 @@ const AddToCart = ({ selectedProduct: { id, stock, colors } }) => {
       return newAmount;
     });
   };
-
   const decrease = () => {
     setAmount((amount) => {
       let newAmount = amount - 1;
@@ -32,7 +31,7 @@ const AddToCart = ({ selectedProduct: { id, stock, colors } }) => {
   return (
     <Wrapper>
       <div className="colors">
-        <span> colors : </span>
+        <span>colors:</span>
         <div>
           {colors.map((color, index) => (
             <button

@@ -11,7 +11,6 @@ import {
 
 const products_reducer = (state, action) => {
   const { type, payload } = action;
-
   switch (type) {
     // Sidebar
     case SIDEBAR_OPEN:
