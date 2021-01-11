@@ -37,13 +37,44 @@ export const FilterProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
+  }, [products]);
+
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort]);
+  }, [products, state.sort, state.filters]);
 
   // Sort products
   const updateSort = (e) => {
     const { value } = e.target;
     dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
+  // Set filters
+  const updateFilters = (e) => {
+    const { name } = e.target;
+    let { value } = e.target;
+    switch (name) {
+      case 'category':
+        value = e.target.textContent;
+        break;
+      case 'color':
+        value = e.target.dataset.color;
+        break;
+      case 'price':
+        value = Number(value);
+        break;
+      case 'shipping':
+        value = e.target.checked;
+        break;
+      default:
+        return state;
+    }
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   // Set view
@@ -54,10 +85,8 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LIST_VIEW });
   };
 
-  // Set filter
-
   return (
-    <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort }}>
+    <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilters }}>
       {children}
     </FilterContext.Provider>
   );
