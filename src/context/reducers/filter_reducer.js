@@ -15,11 +15,6 @@ const filter_reducer = (state, action) => {
   switch (type) {
     case LOAD_PRODUCTS:
       return { ...state, all: [...payload], filtered: [...payload] };
-    // Set products view
-    case SET_LIST_VIEW:
-      return { ...state, grid: false };
-    case SET_GRID_VIEW:
-      return { ...state, grid: true };
     // Sort products
     case UPDATE_SORT:
       return { ...state, sort: payload };
@@ -42,6 +37,11 @@ const filter_reducer = (state, action) => {
       }
       return { ...state, filtered };
     }
+    // Set products view
+    case SET_LIST_VIEW:
+      return { ...state, grid: false };
+    case SET_GRID_VIEW:
+      return { ...state, grid: true };
     default:
       return state;
       throw new Error(`No Matching "${action.type}" - action type`);

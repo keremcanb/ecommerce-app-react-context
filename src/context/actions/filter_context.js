@@ -29,17 +29,19 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort]);
-  // Set products view
+
+  // Sort products
+  const updateSort = (e) => {
+    const { value } = e.target;
+    dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
+  // Set view
   const setGridView = () => {
     dispatch({ type: SET_GRID_VIEW });
   };
   const setListView = () => {
     dispatch({ type: SET_LIST_VIEW });
-  };
-  // Sort products
-  const updateSort = (e) => {
-    const { value } = e.target;
-    dispatch({ type: UPDATE_SORT, payload: value });
   };
 
   return (

@@ -26,13 +26,7 @@ const initialState = {
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // Sidebar
-  const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN });
-  };
-  const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE });
-  };
+
   // Fetch all products
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_REQUEST });
@@ -43,6 +37,7 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_ERROR });
     }
   };
+
   // Fetch single product
   const fetchProduct = async (url) => {
     dispatch({ type: GET_PRODUCT_REQUEST });
@@ -58,6 +53,14 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     fetchProducts(products_url);
   }, []);
+
+  // Set sidebar status
+  const openSidebar = () => {
+    dispatch({ type: SIDEBAR_OPEN });
+  };
+  const closeSidebar = () => {
+    dispatch({ type: SIDEBAR_CLOSE });
+  };
 
   return (
     <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar, fetchProduct }}>

@@ -12,11 +12,6 @@ import {
 const products_reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
-    // Sidebar
-    case SIDEBAR_OPEN:
-      return { ...state, sidebar: true };
-    case SIDEBAR_CLOSE:
-      return { ...state, sidebar: false };
     // Fetch all products
     case GET_PRODUCTS_REQUEST:
       return { ...state, loading: true };
@@ -34,6 +29,11 @@ const products_reducer = (state, action) => {
     }
     case GET_PRODUCT_ERROR:
       return { ...state, loading: false, error: true };
+    // Set sidebar status
+    case SIDEBAR_OPEN:
+      return { ...state, sidebar: true };
+    case SIDEBAR_CLOSE:
+      return { ...state, sidebar: false };
     default:
       return state;
       throw new Error(`No Matching "${type}" - action type`);
