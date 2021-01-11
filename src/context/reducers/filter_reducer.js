@@ -11,10 +11,20 @@ import {
 
 const filter_reducer = (state, action) => {
   const { type, payload } = action;
-  const { sort, filtered } = state;
+  const { sort, filtered, filters } = state;
+
   switch (type) {
-    case LOAD_PRODUCTS:
-      return { ...state, all: [...payload], filtered: [...payload] };
+    case LOAD_PRODUCTS: {
+      let maxPrice = payload.map((p) => p.price);
+      maxPrice = Math.max(...maxPrice);
+
+      return {
+        ...state,
+        products: [...payload],
+        filtered: [...payload],
+        filters: { ...filters, max_price: maxPrice, price: maxPrice }
+      };
+    }
     // Sort products
     case UPDATE_SORT:
       return { ...state, sort: payload };
@@ -37,7 +47,7 @@ const filter_reducer = (state, action) => {
       }
       return { ...state, filtered };
     }
-    // Set products view
+    // Set view
     case SET_LIST_VIEW:
       return { ...state, grid: false };
     case SET_GRID_VIEW:

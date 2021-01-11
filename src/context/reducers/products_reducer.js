@@ -11,6 +11,7 @@ import {
 
 const products_reducer = (state, action) => {
   const { type, payload } = action;
+
   switch (type) {
     // Fetch all products
     case GET_PRODUCTS_REQUEST:

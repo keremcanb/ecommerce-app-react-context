@@ -18,7 +18,17 @@ const initialState = {
   products: [],
   filtered: [],
   grid: false,
-  sort: 'asc'
+  sort: 'asc',
+  filters: {
+    text: '',
+    company: 'all',
+    category: 'all',
+    color: 'all',
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+    shipping: false
+  }
 };
 
 export const FilterProvider = ({ children }) => {
@@ -43,6 +53,8 @@ export const FilterProvider = ({ children }) => {
   const setListView = () => {
     dispatch({ type: SET_LIST_VIEW });
   };
+
+  // Set filter
 
   return (
     <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort }}>
