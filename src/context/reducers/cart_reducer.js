@@ -6,7 +6,6 @@ const cart_reducer = (state, action) => {
   switch (type) {
     default:
       return state;
-
       throw new Error(`No Matching "${action.type}" - action type`);
   }
 };

@@ -11,43 +11,43 @@ import {
 
 const filter_reducer = (state, action) => {
   const { type, payload } = action;
-
+  const { sort, filtered } = state;
   switch (type) {
     case LOAD_PRODUCTS:
-      return { ...state, all_products: [...payload], filtered_products: [...payload] };
-    // Set view
+      return { ...state, all: [...payload], filtered: [...payload] };
+    // Set products view
     case SET_LIST_VIEW:
-      return { ...state, grid_view: false };
+      return { ...state, grid: false };
     case SET_GRID_VIEW:
-      return { ...state, grid_view: true };
+      return { ...state, grid: true };
     // Sort products
     case UPDATE_SORT:
       return { ...state, sort: payload };
     case SORT_PRODUCTS: {
-      const { sort, filtered_products } = state;
-      const tempProducts = [...filtered_products];
-      if (sort === 'price-lowest') {
-        tempProducts.sort((a, b) => a.price - b.price);
+      switch (sort) {
+        case 'low':
+          filtered.sort((a, b) => a.price - b.price);
+          break;
+        case 'high':
+          filtered.sort((a, b) => b.price - a.price);
+          break;
+        case 'asc':
+          filtered.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          });
+          break;
+        case 'desc':
+          filtered.sort((a, b) => {
+            return b.name.localeCompare(a.name);
+          });
+          break;
+        default:
+          return state;
       }
-      if (sort === 'price-highest') {
-        tempProducts.sort((a, b) => b.price - a.price);
-      }
-      if (sort === 'name-a') {
-        tempProducts.sort((a, b) => {
-          return a.name.localeCompare(b.name);
-        });
-      }
-      if (sort === 'name-z') {
-        tempProducts.sort((a, b) => {
-          return b.name.localeCompare(a.name);
-        });
-      }
-      return { ...state, filtered_products: tempProducts };
+      return { ...state, filtered };
     }
-
     default:
       return state;
-
       throw new Error(`No Matching "${action.type}" - action type`);
   }
 };

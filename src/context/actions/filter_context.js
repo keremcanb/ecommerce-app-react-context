@@ -12,14 +12,14 @@ import {
 } from '../types';
 import { useProductsContext } from './products_context';
 
-const initialState = {
-  filtered_products: [],
-  all_products: [],
-  grid_view: false,
-  sort: 'name-a'
-};
-
 const FilterContext = createContext();
+
+const initialState = {
+  products: [],
+  filtered: [],
+  grid: false,
+  sort: 'asc'
+};
 
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
@@ -33,14 +33,14 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort]);
 
-  // Set view
+  // Set products view
   const setGridView = () => {
     dispatch({ type: SET_GRID_VIEW });
   };
   const setListView = () => {
     dispatch({ type: SET_LIST_VIEW });
   };
-  // Sort
+  // Sort products
   const updateSort = (e) => {
     const { value } = e.target;
     dispatch({ type: UPDATE_SORT, payload: value });

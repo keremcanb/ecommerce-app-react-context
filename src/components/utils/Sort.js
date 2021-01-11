@@ -3,29 +3,29 @@ import styled from 'styled-components';
 import { useFilterContext } from '../../context/actions/filter_context';
 
 const Sort = () => {
-  const { filtered_products, grid_view, setGridView, setListView, sort, updateSort } = useFilterContext();
+  const { filtered, grid, setGridView, setListView, sort, updateSort } = useFilterContext();
 
   return (
     <Wrapper>
       <div className="btn-container">
-        <button type="button" className={`${grid_view && 'active'}`} onClick={setGridView}>
+        <button type="button" className={`${grid && 'active'}`} onClick={setGridView}>
           <BsFillGridFill />
         </button>
-        <button type="button" className={`${!grid_view && 'active'}`} onClick={setListView}>
+        <button type="button" className={`${!grid && 'active'}`} onClick={setListView}>
           <BsList />
         </button>
       </div>
 
-      <p>{filtered_products.length} products found</p>
+      <p>{filtered.length} products found</p>
       <hr />
 
       <form>
         <label htmlFor="sort">sort by</label>
         <select name="sort" id="sort" className="sort-input" value={sort} onChange={updateSort}>
-          <option value="price-lowest">price (lowest)</option>
-          <option value="price-highest">price (highest)</option>
-          <option value="name-a">name (a-z)</option>
-          <option value="name-z">name (z-a)</option>
+          <option value="low">price (lowest)</option>
+          <option value="high">price (highest)</option>
+          <option value="asc">name (a-z)</option>
+          <option value="desc">name (z-a)</option>
         </select>
       </form>
     </Wrapper>

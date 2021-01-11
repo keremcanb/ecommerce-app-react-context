@@ -10,22 +10,22 @@ const AddToCart = ({ selectedProduct: { id, stock, colors } }) => {
   const [amount, setAmount] = useState(1);
 
   const increase = () => {
-    setAmount((oldAmount) => {
-      let tempAmount = oldAmount + 1;
-      if (tempAmount > stock) {
-        tempAmount = stock;
+    setAmount((amount) => {
+      let newAmount = amount + 1;
+      if (newAmount > stock) {
+        newAmount = stock;
       }
-      return tempAmount;
+      return newAmount;
     });
   };
 
   const decrease = () => {
-    setAmount((oldAmount) => {
-      let tempAmount = oldAmount - 1;
-      if (tempAmount < 1) {
-        tempAmount = 1;
+    setAmount((amount) => {
+      let newAmount = amount - 1;
+      if (newAmount < 1) {
+        newAmount = 1;
       }
-      return tempAmount;
+      return newAmount;
     });
   };
 

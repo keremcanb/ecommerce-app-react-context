@@ -13,6 +13,8 @@ import {
   GET_PRODUCT_ERROR
 } from '../types';
 
+const ProductsContext = createContext();
+
 const initialState = {
   sidebar: false,
   loading: false,
@@ -21,8 +23,6 @@ const initialState = {
   featured: [],
   product: {}
 };
-
-const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

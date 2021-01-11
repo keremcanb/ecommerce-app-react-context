@@ -35,10 +35,8 @@ const products_reducer = (state, action) => {
     }
     case GET_PRODUCT_ERROR:
       return { ...state, loading: false, error: true };
-
     default:
       return state;
-
       throw new Error(`No Matching "${type}" - action type`);
   }
 };
