@@ -49,6 +49,7 @@ const filter_reducer = (state, action) => {
     // Filters
     case FILTER_PRODUCTS: {
       let product = [...products];
+
       if (text) {
         product = product.filter((p) => p.name.toLowerCase().startsWith(text));
       }

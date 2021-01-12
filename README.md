@@ -1,6 +1,6 @@
 # eCommerce App React Context
 
-An eCommerce with advanced filtering system and cart functionality.
+An eCommerce app with advanced filtering system and cart functionality.
 
 Libraries used for the app are Styled componenets, Axios, React Router, Auth0
 
