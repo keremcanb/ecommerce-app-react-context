@@ -34,13 +34,13 @@ const Filters = () => {
           <div className="form-control">
             <h5>category</h5>
             <div>
-              {categories.map((cat, index) => (
+              {categories.map((cat, i) => (
                 <button
-                  key={index}
+                  key={i}
                   onClick={updateFilters}
                   type="button"
                   name="category"
-                  className={`${category === cat.toLowerCase() && 'active'}`}
+                  className={`${category === cat && 'active'}`}
                 >
                   {cat}
                 </button>
@@ -51,8 +51,8 @@ const Filters = () => {
           <div className="form-control">
             <h5>company</h5>
             <select name="company" value={company} onChange={updateFilters} className="company">
-              {companies.map((comp, index) => (
-                <option key={index} value={comp}>
+              {companies.map((comp, i) => (
+                <option key={i} value={comp}>
                   {comp}
                 </option>
               ))}
@@ -62,10 +62,10 @@ const Filters = () => {
           <div className="form-control">
             <h5>colors</h5>
             <div className="colors">
-              {colors.map((col, index) =>
+              {colors.map((col, i) =>
                 col === 'all' ? (
                   <button
-                    key={index}
+                    key={i}
                     name="color"
                     onClick={updateFilters}
                     data-color="all"
@@ -75,7 +75,7 @@ const Filters = () => {
                   </button>
                 ) : (
                   <button
-                    key={index}
+                    key={i}
                     name="color"
                     style={{ background: col }}
                     className={`${color === col ? 'color-btn active' : 'color-btn'}`}

@@ -44,16 +44,15 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
-  // Sort products
   const updateSort = (e) => {
     const { value } = e.target;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
-  // Set filters
   const updateFilters = (e) => {
     const { name } = e.target;
     let { value } = e.target;
+    // eslint-disable-next-line default-case
     switch (name) {
       case 'category':
         value = e.target.textContent;
@@ -66,9 +65,6 @@ export const FilterProvider = ({ children }) => {
         break;
       case 'shipping':
         value = e.target.checked;
-        break;
-      default:
-        return state;
     }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };

@@ -12,12 +12,10 @@ import {
 const filter_reducer = (state, action) => {
   const { type, payload } = action;
   const { sort, filtered, filters, products } = state;
-
   switch (type) {
     case LOAD_PRODUCTS: {
       let maxPrice = payload.map((product) => product.price);
       maxPrice = Math.max(...maxPrice);
-
       return {
         ...state,
         products: [...payload],
@@ -48,19 +46,17 @@ const filter_reducer = (state, action) => {
       return { ...state, filtered };
     }
     // Set filters
+    case UPDATE_FILTERS: {
+      const { name, value } = payload;
+      return { ...state, filters: { ...filters, [name]: value } };
+    }
     case FILTER_PRODUCTS: {
       const { text, category, company, color, price, shipping } = filters;
       let tempProducts = [...products];
       if (text) {
-        tempProducts = tempProducts.filter((product) => {
-          return product.name.toLowerCase().startsWith(text);
-        });
+        tempProducts = tempProducts.filter((product) => product.name.toLowerCase().startsWith(text));
       }
       return { ...state, filtered: tempProducts };
-    }
-    case UPDATE_FILTERS: {
-      const { name, value } = payload;
-      return { ...state, filters: { ...filters, [name]: value } };
     }
     case CLEAR_FILTERS:
       return {
@@ -71,8 +67,6 @@ const filter_reducer = (state, action) => {
           company: 'all',
           category: 'all',
           color: 'all',
-          // min_price: 0,
-          // max_price: 0,
           price: filters.max_price,
           shipping: false
         }
