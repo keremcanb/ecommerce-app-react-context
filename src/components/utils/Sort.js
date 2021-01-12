@@ -16,7 +16,7 @@ const Sort = () => {
         </button>
       </div>
 
-      <p>{filtered.length} products found</p>
+      <p>{filtered.length} product found</p>
       <hr />
 
       <form>

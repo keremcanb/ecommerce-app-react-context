@@ -12,7 +12,10 @@ import {
 const filter_reducer = (state, action) => {
   const { type, payload } = action;
   const { sort, filtered, filters, products } = state;
+  const { text, category, company, color, price, shipping } = filters;
+
   switch (type) {
+    // Products
     case LOAD_PRODUCTS: {
       let maxPrice = payload.map((product) => product.price);
       maxPrice = Math.max(...maxPrice);
@@ -23,7 +26,7 @@ const filter_reducer = (state, action) => {
         filters: { ...filters, max_price: maxPrice, price: maxPrice }
       };
     }
-    // Sort products
+    // Sort
     case UPDATE_SORT:
       return { ...state, sort: payload };
     case SORT_PRODUCTS: {
@@ -45,18 +48,18 @@ const filter_reducer = (state, action) => {
       }
       return { ...state, filtered };
     }
-    // Set filters
-    case UPDATE_FILTERS: {
-      const { name, value } = payload;
-      return { ...state, filters: { ...filters, [name]: value } };
-    }
+    // Filter
     case FILTER_PRODUCTS: {
-      const { text, category, company, color, price, shipping } = filters;
       let tempProducts = [...products];
+
       if (text) {
         tempProducts = tempProducts.filter((product) => product.name.toLowerCase().startsWith(text));
       }
       return { ...state, filtered: tempProducts };
+    }
+    case UPDATE_FILTERS: {
+      const { name, value } = payload;
+      return { ...state, filters: { ...filters, [name]: value } };
     }
     case CLEAR_FILTERS:
       return {
@@ -71,7 +74,7 @@ const filter_reducer = (state, action) => {
           shipping: false
         }
       };
-    // Set view
+    // View
     case SET_LIST_VIEW:
       return { ...state, grid: false };
     case SET_GRID_VIEW:

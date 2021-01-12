@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import { useEffect, useContext, useReducer, createContext } from 'react';
 import reducer from '../reducers/filter_reducer';
 import {
@@ -44,15 +45,17 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
+  // Sort
   const updateSort = (e) => {
     const { value } = e.target;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
+  // Filter
   const updateFilters = (e) => {
     const { name } = e.target;
     let { value } = e.target;
-    // eslint-disable-next-line default-case
+
     switch (name) {
       case 'category':
         value = e.target.textContent;
@@ -73,10 +76,11 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: CLEAR_FILTERS });
   };
 
-  // Set view
+  // View
   const setGridView = () => {
     dispatch({ type: SET_GRID_VIEW });
   };
+
   const setListView = () => {
     dispatch({ type: SET_LIST_VIEW });
   };
