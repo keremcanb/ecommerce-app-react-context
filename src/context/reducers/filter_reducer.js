@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import {
   LOAD_PRODUCTS,
   SET_LIST_VIEW,
@@ -42,34 +43,29 @@ const filter_reducer = (state, action) => {
           break;
         case 'desc':
           filtered.sort((a, b) => b.name.localeCompare(a.name));
-          break;
-        default:
-          return state;
       }
       return { ...state, filtered };
     }
-    // Filter
+    // Filters
     case FILTER_PRODUCTS: {
-      let tempProducts = [...products];
+      let product = [...products];
       if (text) {
-        tempProducts = tempProducts.filter((prod) => prod.name.toLowerCase().startsWith(text));
+        product = product.filter((p) => p.name.toLowerCase().startsWith(text));
       }
       if (category !== 'all') {
-        tempProducts = tempProducts.filter((prod) => prod.category === category);
+        product = product.filter((p) => p.category === category);
       }
       if (company !== 'all') {
-        tempProducts = tempProducts.filter((prod) => prod.company === company);
+        product = product.filter((p) => p.company === company);
       }
       if (color !== 'all') {
-        tempProducts = tempProducts.filter((prod) => {
-          return prod.colors.find((c) => c === color);
-        });
+        product = product.filter((p) => p.colors.find((c) => c === color));
       }
-      tempProducts = tempProducts.filter((prod) => prod.price <= price);
+      product = product.filter((p) => p.price <= price);
       if (shipping) {
-        tempProducts = tempProducts.filter((prod) => prod.shipping === true);
+        product = product.filter((p) => p.shipping === true);
       }
-      return { ...state, filtered: tempProducts };
+      return { ...state, filtered: product };
     }
     case UPDATE_FILTERS: {
       const { name, value } = payload;
