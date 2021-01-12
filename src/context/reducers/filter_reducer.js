@@ -3,9 +3,9 @@ import {
   LOAD_PRODUCTS,
   SET_LIST_VIEW,
   SET_GRID_VIEW,
-  UPDATE_SORT,
+  SET_SORT,
   SORT_PRODUCTS,
-  UPDATE_FILTERS,
+  SET_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS
 } from '../types';
@@ -28,7 +28,7 @@ const filter_reducer = (state, action) => {
       };
     }
     // Sort
-    case UPDATE_SORT:
+    case SET_SORT:
       return { ...state, sort: payload };
     case SORT_PRODUCTS: {
       switch (sort) {
@@ -68,7 +68,7 @@ const filter_reducer = (state, action) => {
       }
       return { ...state, filtered: product };
     }
-    case UPDATE_FILTERS: {
+    case SET_FILTERS: {
       const { name, value } = payload;
       return { ...state, filters: { ...filters, [name]: value } };
     }

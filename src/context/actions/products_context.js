@@ -3,8 +3,8 @@ import { useContext, useEffect, useReducer, createContext } from 'react';
 import reducer from '../reducers/products_reducer';
 import { products_url } from '../../utils/constants';
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
+  OPEN_SIDEBAR,
+  CLOSE_SIDEBAR,
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
@@ -16,9 +16,9 @@ import {
 const ProductsContext = createContext();
 
 const initialState = {
-  sidebar: false,
   loading: false,
   error: false,
+  sidebar: false,
   products: [],
   featured: [],
   product: {}
@@ -56,10 +56,11 @@ export const ProductsProvider = ({ children }) => {
 
   // Set sidebar status
   const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN });
+    dispatch({ type: OPEN_SIDEBAR });
   };
+
   const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE });
+    dispatch({ type: CLOSE_SIDEBAR });
   };
 
   return (

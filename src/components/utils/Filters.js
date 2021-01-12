@@ -6,7 +6,7 @@ import { getUniqueValues, formatPrice } from '../../utils/helpers';
 const Filters = () => {
   const {
     filters: { text, category, company, color, min_price, price, max_price, shipping },
-    updateFilters,
+    setFilters,
     clearFilters,
     products
   } = useFilterContext();
@@ -27,7 +27,7 @@ const Filters = () => {
               placeholder="search"
               className="search-input"
               value={text}
-              onChange={updateFilters}
+              onChange={setFilters}
             />
           </div>
           {/* categories */}
@@ -37,7 +37,7 @@ const Filters = () => {
               {categories.map((cat, i) => (
                 <button
                   key={i}
-                  onClick={updateFilters}
+                  onClick={setFilters}
                   type="button"
                   name="category"
                   className={`${category === cat && 'active'}`}
@@ -50,7 +50,7 @@ const Filters = () => {
           {/* companies */}
           <div className="form-control">
             <h5>company</h5>
-            <select name="company" value={company} onChange={updateFilters} className="company">
+            <select name="company" value={company} onChange={setFilters} className="company">
               {companies.map((comp, i) => (
                 <option key={i} value={comp}>
                   {comp}
@@ -67,7 +67,7 @@ const Filters = () => {
                   <button
                     key={i}
                     name="color"
-                    onClick={updateFilters}
+                    onClick={setFilters}
                     data-color="all"
                     className={`${color === 'all' ? 'all-btn active' : 'all-btn'}`}
                   >
@@ -80,7 +80,7 @@ const Filters = () => {
                     style={{ background: col }}
                     className={`${color === col ? 'color-btn active' : 'color-btn'}`}
                     data-color={col}
-                    onClick={updateFilters}
+                    onClick={setFilters}
                   >
                     {color === col && <FaCheck />}
                   </button>
@@ -92,12 +92,12 @@ const Filters = () => {
           <div className="form-control">
             <h5>price</h5>
             <p className="price">{formatPrice(price)}</p>
-            <input type="range" name="price" min={min_price} max={max_price} onChange={updateFilters} value={price} />
+            <input type="range" name="price" min={min_price} max={max_price} onChange={setFilters} value={price} />
           </div>
           {/* shippping */}
           <div className="form-control shipping">
             <label htmlFor="shipping"> free shipping</label>
-            <input type="checkbox" name="shipping" id="shipping" onChange={updateFilters} checked={shipping} />
+            <input type="checkbox" name="shipping" id="shipping" onChange={setFilters} checked={shipping} />
           </div>
         </form>
         {/* clear filters */}

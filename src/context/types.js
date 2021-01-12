@@ -1,5 +1,5 @@
-export const SIDEBAR_OPEN = 'SIDEBAR_OPEN';
-export const SIDEBAR_CLOSE = 'SIDEBAR_CLOSE';
+export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
+export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
 
 export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
@@ -14,10 +14,10 @@ export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const SET_GRID_VIEW = 'SET_GRID_VIEW';
 export const SET_LIST_VIEW = 'SET_LIST_VIEW';
 
-export const UPDATE_SORT = 'UPDATE_SORT';
+export const SET_SORT = 'SET_SORT';
 export const SORT_PRODUCTS = 'SORT_PRODUCTS';
 
-export const UPDATE_FILTERS = 'UPDATE_FILTERS';
+export const SET_FILTERS = 'SET_FILTERS';
 export const FILTER_PRODUCTS = 'FILTER_PRODUCTS';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 

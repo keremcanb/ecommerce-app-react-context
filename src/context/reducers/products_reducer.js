@@ -1,6 +1,6 @@
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
+  OPEN_SIDEBAR,
+  CLOSE_SIDEBAR,
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
@@ -31,9 +31,9 @@ const products_reducer = (state, action) => {
     case GET_PRODUCT_ERROR:
       return { ...state, loading: false, error: true };
     // Set sidebar status
-    case SIDEBAR_OPEN:
+    case OPEN_SIDEBAR:
       return { ...state, sidebar: true };
-    case SIDEBAR_CLOSE:
+    case CLOSE_SIDEBAR:
       return { ...state, sidebar: false };
     default:
       return state;

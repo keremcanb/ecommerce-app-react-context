@@ -5,9 +5,9 @@ import {
   LOAD_PRODUCTS,
   SET_GRID_VIEW,
   SET_LIST_VIEW,
-  UPDATE_SORT,
+  SET_SORT,
   SORT_PRODUCTS,
-  UPDATE_FILTERS,
+  SET_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS
 } from '../types';
@@ -46,13 +46,14 @@ export const FilterProvider = ({ children }) => {
   }, [products, state.sort, state.filters]);
 
   // Sort
-  const updateSort = (e) => {
+  // Get dropdown option value and pass to reducer
+  const setSort = (e) => {
     const { value } = e.target;
-    dispatch({ type: UPDATE_SORT, payload: value });
+    dispatch({ type: SET_SORT, payload: value });
   };
 
   // Filter
-  const updateFilters = (e) => {
+  const setFilters = (e) => {
     const { name } = e.target;
     let { value } = e.target;
 
@@ -69,7 +70,7 @@ export const FilterProvider = ({ children }) => {
       case 'shipping':
         value = e.target.checked;
     }
-    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+    dispatch({ type: SET_FILTERS, payload: { name, value } });
   };
 
   const clearFilters = () => {
@@ -86,7 +87,7 @@ export const FilterProvider = ({ children }) => {
   };
 
   return (
-    <FilterContext.Provider value={{ ...state, setGridView, setListView, updateSort, updateFilters, clearFilters }}>
+    <FilterContext.Provider value={{ ...state, setGridView, setListView, setSort, setFilters, clearFilters }}>
       {children}
     </FilterContext.Provider>
   );

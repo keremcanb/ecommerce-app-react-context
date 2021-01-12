@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useFilterContext } from '../../context/actions/filter_context';
 
 const Sort = () => {
-  const { filtered, grid, setGridView, setListView, sort, updateSort } = useFilterContext();
+  const { filtered, grid, setGridView, setListView, sort, setSort } = useFilterContext();
 
   return (
     <Wrapper>
@@ -21,7 +21,7 @@ const Sort = () => {
 
       <form>
         <label htmlFor="sort">sort by</label>
-        <select name="sort" id="sort" className="sort-input" value={sort} onChange={updateSort}>
+        <select name="sort" id="sort" className="sort-input" value={sort} onChange={setSort}>
           <option value="low">price (lowest)</option>
           <option value="high">price (highest)</option>
           <option value="asc">name (a-z)</option>
