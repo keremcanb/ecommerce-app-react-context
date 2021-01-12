@@ -12,7 +12,7 @@ const ProductList = () => {
       <GridView products={filtered}>product list</GridView>
     )
   ) : (
-    <h5 style={{ textTransform: 'none' }}>Sorry, no products matched your search...</h5>
+    <h5 style={{ textTransform: 'none' }}>Sorry, no products matched your search</h5>
   );
 };
 
