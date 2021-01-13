@@ -54,7 +54,7 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts(products_url);
   }, []);
 
-  // Set sidebar status
+  // Set nav sidebar status
   const openSidebar = () => {
     dispatch({ type: OPEN_SIDEBAR });
   };

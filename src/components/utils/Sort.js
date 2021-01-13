@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useFilterContext } from '../../context/actions/filter_context';
 
 const Sort = () => {
-  const { filtered, grid, setGridView, setListView, sort, setSort } = useFilterContext();
+  const { filtered, grid, sort, setGridView, setListView, setSort } = useFilterContext();
 
   return (
     <Wrapper>

@@ -6,11 +6,12 @@ import { getUniqueValues, formatPrice } from '../../utils/helpers';
 const Filters = () => {
   const {
     filters: { text, category, company, color, min_price, price, max_price, shipping },
+    products,
     setFilters,
-    clearFilters,
-    products
+    clearFilters
   } = useFilterContext();
 
+  // Get only unique values products array
   const categories = getUniqueValues(products, 'category');
   const companies = getUniqueValues(products, 'company');
   const colors = getUniqueValues(products, 'colors');
@@ -19,7 +20,7 @@ const Filters = () => {
     <Wrapper>
       <div className="content">
         <form onSubmit={(e) => e.preventDefault()}>
-          {/* search  */}
+          {/* Search  */}
           <div className="form-control">
             <input
               type="text"
@@ -30,7 +31,7 @@ const Filters = () => {
               onChange={setFilters}
             />
           </div>
-          {/* categories */}
+          {/* Categories */}
           <div className="form-control">
             <h5>category</h5>
             <div>
@@ -47,7 +48,7 @@ const Filters = () => {
               ))}
             </div>
           </div>
-          {/* companies */}
+          {/* Companies */}
           <div className="form-control">
             <h5>company</h5>
             <select name="company" value={company} onChange={setFilters} className="company">
@@ -58,7 +59,7 @@ const Filters = () => {
               ))}
             </select>
           </div>
-          {/* colors */}
+          {/* Colors */}
           <div className="form-control">
             <h5>colors</h5>
             <div className="colors">
@@ -88,19 +89,19 @@ const Filters = () => {
               )}
             </div>
           </div>
-          {/* price */}
+          {/* Price */}
           <div className="form-control">
             <h5>price</h5>
             <p className="price">{formatPrice(price)}</p>
             <input type="range" name="price" min={min_price} max={max_price} onChange={setFilters} value={price} />
           </div>
-          {/* shippping */}
+          {/* Shippping */}
           <div className="form-control shipping">
             <label htmlFor="shipping">free shipping</label>
             <input type="checkbox" name="shipping" id="shipping" onChange={setFilters} checked={shipping} />
           </div>
         </form>
-        {/* clear filters */}
+        {/* Clear filters */}
         <button type="button" className="clear-btn" onClick={clearFilters}>
           {' '}
           clear filters

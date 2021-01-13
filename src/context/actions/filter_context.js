@@ -35,6 +35,7 @@ const initialState = {
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { sort, filters } = state;
 
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
@@ -43,7 +44,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort, state.filters]);
+  }, [products, sort, filters]);
 
   // Sort (Get dropdown option value and pass to reducer)
   const setSort = (e) => {
