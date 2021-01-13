@@ -45,28 +45,31 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [products, state.sort, state.filters]);
 
-  // Sort
-  // Get dropdown option value and pass to reducer
+  // Sort (Get dropdown option value and pass to reducer)
   const setSort = (e) => {
     const { value } = e.target;
     dispatch({ type: SET_SORT, payload: value });
   };
 
-  // Filter
+  // Filter (Get name & value from filter input and buttons)
   const setFilters = (e) => {
     const { name } = e.target;
     let { value } = e.target;
-
+    // Get values according to names
     switch (name) {
+      // Because button has no value, getting with textContent property.
       case 'category':
         value = e.target.textContent;
         break;
+      // Using dataset to get values from data-color.
       case 'color':
         value = e.target.dataset.color;
         break;
+      // Convert string to number
       case 'price':
         value = Number(value);
         break;
+      // Getting value from checked attribute
       case 'shipping':
         value = e.target.checked;
     }

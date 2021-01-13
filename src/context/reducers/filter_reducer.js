@@ -16,9 +16,10 @@ const filter_reducer = (state, action) => {
   const { text, category, company, color, price, shipping } = filters;
 
   switch (type) {
-    // Products
+    // Get products
     case LOAD_PRODUCTS: {
-      let maxPrice = payload.map((product) => product.price);
+      // Get prices array, calculate maxprice and add it to filters object
+      let maxPrice = payload.map((item) => item.price);
       maxPrice = Math.max(...maxPrice);
       return {
         ...state,
@@ -30,6 +31,7 @@ const filter_reducer = (state, action) => {
     // Sort
     case SET_SORT:
       return { ...state, sort: payload };
+    // Set sort according to value coming from dropdown
     case SORT_PRODUCTS: {
       switch (sort) {
         case 'low':
@@ -47,30 +49,33 @@ const filter_reducer = (state, action) => {
       return { ...state, filtered };
     }
     // Filters
+    case SET_FILTERS: {
+      // Get name & values coming from actions payload and return
+      const { name, value } = payload;
+      // Set filter properties dynamically with controlled input (get current values and update through onChange values)
+      return { ...state, filters: { ...filters, [name]: value } };
+    }
     case FILTER_PRODUCTS: {
-      let product = [...products];
-
+      // Before starting to filter always get fresh copy of all products
+      let items = [...products];
       if (text) {
-        product = product.filter((p) => p.name.toLowerCase().startsWith(text));
+        items = items.filter((i) => i.name.toLowerCase().startsWith(text));
       }
       if (category !== 'all') {
-        product = product.filter((p) => p.category === category);
+        items = items.filter((i) => i.category === category);
       }
       if (company !== 'all') {
-        product = product.filter((p) => p.company === company);
+        items = items.filter((i) => i.company === company);
       }
       if (color !== 'all') {
-        product = product.filter((p) => p.colors.find((c) => c === color));
+        items = items.filter((i) => i.colors.find((c) => c === color));
       }
-      product = product.filter((p) => p.price <= price);
+      items = items.filter((i) => i.price <= price);
       if (shipping) {
-        product = product.filter((p) => p.shipping === true);
+        items = items.filter((i) => i.shipping === true);
       }
-      return { ...state, filtered: product };
-    }
-    case SET_FILTERS: {
-      const { name, value } = payload;
-      return { ...state, filters: { ...filters, [name]: value } };
+      // After filtering return filtered
+      return { ...state, filtered: items };
     }
     case CLEAR_FILTERS:
       return {
