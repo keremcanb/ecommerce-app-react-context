@@ -7,18 +7,6 @@ const Sort = () => {
 
   return (
     <Wrapper>
-      <div className="btn-container">
-        <button type="button" className={`${grid && 'active'}`} onClick={setGridView}>
-          <BsFillGridFill />
-        </button>
-        <button type="button" className={`${!grid && 'active'}`} onClick={setListView}>
-          <BsList />
-        </button>
-      </div>
-
-      <p>{filtered.length} product found</p>
-      <hr />
-
       <form>
         <label htmlFor="sort">sort by</label>
         <select name="sort" id="sort" className="sort-input" value={sort} onChange={setSort}>

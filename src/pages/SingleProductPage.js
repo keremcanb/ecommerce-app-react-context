@@ -14,15 +14,13 @@ const SingleProductPage = () => {
     loading,
     error
   } = useProductsContext();
-
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     fetchProduct(`${single_product_url}${id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  const history = useHistory();
 
   useEffect(() => {
     if (error) {

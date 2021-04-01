@@ -10,7 +10,6 @@ const Filters = () => {
     setFilters,
     clearFilters
   } = useFilterContext();
-
   // Get only unique values products array
   const categories = getUniqueValues(products, 'category');
   const companies = getUniqueValues(products, 'company');
